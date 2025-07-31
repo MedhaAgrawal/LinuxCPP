@@ -1,12 +1,21 @@
 #include <iostream>
 #include "include/list.h"
+#include "include/database.h"
 using namespace std;
 
-int main(int arg_count, char* args[]){
+/* Extra arguments in Debug mode
+  argv[0]: C:\Users\ADMIN\OneDrive\Desktop\LinuxC++/LinuxC++.exe
+  argv[1]: Medha
+  argv[2]: 2>CON //Extra
+  argv[3]: 1>CON //Extra
+  argv[4]: <CON //Extra
+*/
+
+int main(int argc, char* argv[]){
      string name;
 
-    if(arg_count > 1){
-        name = args[1];
+    if(argc > 1){
+        name = argv[1];
     }
     else{
         cout<<"No argument provided to main()"<<endl;
@@ -18,6 +27,10 @@ int main(int arg_count, char* args[]){
 
     List objList(name, 25);
     objList.printList();
+
+    Database db;
+    db.writeFile();
+    db.readFile();
 
     return 0;
 }
